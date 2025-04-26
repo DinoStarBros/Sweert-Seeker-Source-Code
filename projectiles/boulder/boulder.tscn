@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2j6ttcd4ir0"]
+
+[ext_resource type="Script" uid="uid://cjk84iol2u86a" path="res://projectiles/boulder/boulder.gd" id="1_nb2vu"]
+[ext_resource type="Texture2D" uid="uid://c53xsnm74v5pd" path="res://Art/Stuff2/moon.png" id="2_34ck3"]
+[ext_resource type="AudioStream" uid="uid://cq1v7cgw8ngyk" path="res://Audio/tresure/slashParry.wav" id="3_1vkbx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nb2vu"]
+radius = 27.0
+
+[sub_resource type="Animation" id="Animation_1vkbx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_34ck3"]
+resource_name = "boom"
+
+[sub_resource type="Animation" id="Animation_nb2vu"]
+resource_name = "yeet"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4995),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vkbx"]
+_data = {
+&"RESET": SubResource("Animation_1vkbx"),
+&"boom": SubResource("Animation_34ck3"),
+&"yeet": SubResource("Animation_nb2vu")
+}
+
+[node name="boulder" type="Area2D"]
+collision_layer = 12
+collision_mask = 12
+script = ExtResource("1_nb2vu")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_nb2vu")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1vkbx")
+}
+autoplay = "yeet"
+
+[node name="Moon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_34ck3")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="reflect" type="AudioStreamPlayer" parent="sfx"]
+unique_name_in_owner = true
+stream = ExtResource("3_1vkbx")
+volume_db = -5.0
+bus = &"sfx"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,271 @@
+[gd_scene load_steps=17 format=3 uid="uid://pqr3bxwv54rn"]
+
+[ext_resource type="Script" uid="uid://bbjlmyavccsyj" path="res://entities/orb/orb.gd" id="1_4ogyp"]
+[ext_resource type="Script" uid="uid://dcqs5prptxjhg" path="res://StateMachines/orb_states/orbStateMachine.gd" id="2_h8qx5"]
+[ext_resource type="Script" uid="uid://dyrkx4r1n4j78" path="res://StateMachines/orb_states/shootingOrb.gd" id="3_ulscp"]
+[ext_resource type="Script" uid="uid://dhcxh6iocsnyu" path="res://StateMachines/orb_states/deadOrb.gd" id="4_3337n"]
+[ext_resource type="Texture2D" uid="uid://bg2a30g81wo63" path="res://Art/Placeholder/NPCs-child.png" id="4_b6827"]
+[ext_resource type="AudioStream" uid="uid://blcay1tfimw0e" path="res://Audio/cardtowersfx/player_hit.wav" id="5_qampi"]
+[ext_resource type="Script" uid="uid://drsv3u4iptd00" path="res://StateMachines/orb_states/hookedOrb.gd" id="5_yqh0o"]
+[ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="6_cutij"]
+[ext_resource type="Texture2D" uid="uid://c0jpnw00110i" path="res://Art/hitspark.png" id="7_3337n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ogyp"]
+radius = 25.0
+
+[sub_resource type="Curve" id="Curve_yqh0o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_cutij"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitfx/Hitspark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitfx/Hitspark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NpCs-child:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("orbcol:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3337n"]
+resource_name = "death"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitfx/Hitspark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitfx/Hitspark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitfx/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NpCs-child:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(100, 100, 100, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("orbcol:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sfx/hit1:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx/hit2:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qampi"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.05
+
+[sub_resource type="Animation" id="Animation_yqh0o"]
+resource_name = "hooked"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cutij"]
+_data = {
+&"RESET": SubResource("Animation_cutij"),
+&"death": SubResource("Animation_3337n"),
+&"hooked": SubResource("Animation_yqh0o"),
+&"loop": SubResource("Animation_qampi")
+}
+
+[node name="orb" type="CharacterBody2D"]
+collision_layer = 70
+collision_mask = 70
+script = ExtResource("1_4ogyp")
+
+[node name="orbcol" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ogyp")
+
+[node name="orbStateMachine" type="Node" parent="." node_paths=PackedStringArray("state_text")]
+unique_name_in_owner = true
+script = ExtResource("2_h8qx5")
+initial_state = "shooting"
+state_text = NodePath("../Label")
+
+[node name="shooting" type="Node" parent="orbStateMachine"]
+script = ExtResource("3_ulscp")
+
+[node name="dead" type="Node" parent="orbStateMachine"]
+script = ExtResource("4_3337n")
+
+[node name="hooked" type="Node" parent="orbStateMachine"]
+script = ExtResource("5_yqh0o")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -47.0
+offset_right = 22.0
+offset_bottom = -24.0
+text = "bruzz"
+
+[node name="NpCs-child" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_b6827")
+hframes = 4
+vframes = 3
+
+[node name="sfx" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="hit1" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_qampi")
+pitch_scale = 1.2
+bus = &"sfx"
+
+[node name="hit2" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_cutij")
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="hitfx" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Hitspark" type="Sprite2D" parent="hitfx"]
+visible = false
+position = Vector2(35, 0)
+scale = Vector2(0.5, 0.35)
+texture = ExtResource("7_3337n")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="hitfx"]
+emitting = false
+amount = 15
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1900.0
+initial_velocity_max = 2000.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_yqh0o")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_cutij")
+}
+autoplay = "loop"

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo6nqc1pt14j0"]
+
+[ext_resource type="Script" uid="uid://bcgutr4hb0ced" path="res://screens/credits/credits.gd" id="1_53a3d"]
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_53a3d")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1100.0
+offset_bottom = 624.0
+
+[node name="back" type="Button" parent="."]
+offset_left = 472.0
+offset_top = 560.0
+offset_right = 578.0
+offset_bottom = 591.0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+text = "Back"
+
+[node name="credits" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 40.0
+offset_right = 116.0
+offset_bottom = 63.0
+text = "Credits:"
+
+[node name="stuff" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 72.0
+offset_right = 225.0
+offset_bottom = 381.0
+text = "Software:
+
+Godot Engine
+
+Aseprite
+Krita
+
+Fl Studio Mobile
+LabChirp
+
+Asset Packs:
+
+Kenney Font & SFX"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

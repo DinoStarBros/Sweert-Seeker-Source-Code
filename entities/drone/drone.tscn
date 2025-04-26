@@ -1,0 +1,325 @@
+[gd_scene load_steps=18 format=3 uid="uid://fv1o8nqsbltd"]
+
+[ext_resource type="Script" uid="uid://ctcx5xwybhdjv" path="res://entities/drone/drone.gd" id="1_3yxas"]
+[ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_qn5ix"]
+[ext_resource type="AudioStream" uid="uid://blcay1tfimw0e" path="res://Audio/cardtowersfx/player_hit.wav" id="3_lnwgw"]
+[ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="4_nsmxi"]
+[ext_resource type="AudioStream" uid="uid://bbfjcr1gghown" path="res://Audio/kenneystuff/Audio/spaceEngineSmall_001.ogg" id="5_gtlfc"]
+[ext_resource type="Texture2D" uid="uid://c0jpnw00110i" path="res://Art/hitspark.png" id="5_sfsy6"]
+[ext_resource type="Script" uid="uid://wg7attloxoyj" path="res://StateMachines/drone_states/droneStateMachine.gd" id="6_kdbqk"]
+[ext_resource type="Script" uid="uid://begwilrdjgsm0" path="res://StateMachines/drone_states/flyingDrone.gd" id="7_gtlfc"]
+[ext_resource type="Script" uid="uid://beemqkdk7mkdr" path="res://StateMachines/drone_states/deadDrone.gd" id="8_55k60"]
+[ext_resource type="Script" uid="uid://niirc5ujo2pg" path="res://StateMachines/drone_states/hookedDrone.gd" id="9_81par"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdbqk"]
+radius = 26.1725
+
+[sub_resource type="Animation" id="Animation_7eah5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitfx/Hitspark:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitfx/Hitspark:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/fly:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ebbcm"]
+resource_name = "death"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx/hit1:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/hit2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitfx/Hitspark:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hitfx/Hitspark:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("hitfx/CPUParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_gtlfc"]
+resource_name = "hooked"
+
+[sub_resource type="Animation" id="Animation_kdbqk"]
+resource_name = "loop"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx/fly:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7eah5"]
+_data = {
+&"RESET": SubResource("Animation_7eah5"),
+&"death": SubResource("Animation_ebbcm"),
+&"hooked": SubResource("Animation_gtlfc"),
+&"loop": SubResource("Animation_kdbqk")
+}
+
+[sub_resource type="Curve" id="Curve_c3u4w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="drone" type="CharacterBody2D"]
+collision_layer = 70
+collision_mask = 70
+script = ExtResource("1_3yxas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kdbqk")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_qn5ix")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7eah5")
+}
+autoplay = "loop"
+
+[node name="sfx" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="hit1" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("3_lnwgw")
+pitch_scale = 1.2
+bus = &"sfx"
+
+[node name="hit2" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_nsmxi")
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="fly" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("5_gtlfc")
+volume_db = -5.0
+pitch_scale = 0.5
+max_distance = 500.0
+bus = &"sfx"
+
+[node name="state_txt" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -44.0
+offset_right = 18.0
+offset_bottom = -21.0
+text = "bruh"
+
+[node name="hitfx" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Hitspark" type="Sprite2D" parent="hitfx"]
+visible = false
+position = Vector2(120, 0)
+scale = Vector2(1.5, 1.05)
+texture = ExtResource("5_sfsy6")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="hitfx"]
+emitting = false
+amount = 20
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1900.0
+initial_velocity_max = 2000.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_c3u4w")
+
+[node name="droneStateMachine" type="Node" parent="." node_paths=PackedStringArray("state_text")]
+unique_name_in_owner = true
+script = ExtResource("6_kdbqk")
+initial_state = "flying"
+state_text = NodePath("../state_txt")
+
+[node name="flying" type="Node" parent="droneStateMachine"]
+script = ExtResource("7_gtlfc")
+
+[node name="hooked" type="Node" parent="droneStateMachine"]
+script = ExtResource("9_81par")
+
+[node name="dead" type="Node" parent="droneStateMachine"]
+script = ExtResource("8_55k60")

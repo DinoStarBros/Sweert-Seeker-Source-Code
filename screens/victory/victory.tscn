@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq551ogqosnjm"]
+
+[ext_resource type="Script" uid="uid://cbb3idx3i56dk" path="res://screens/victory/victory.gd" id="1_xiub4"]
+[ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_jpao3"]
+[ext_resource type="Texture2D" uid="uid://elkxoju041sl" path="res://Art/Stuff2/poker_hip-Sheet.png" id="3_6xyub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_520se"]
+atlas = ExtResource("3_6xyub")
+region = Rect2(192, 0, 64, 64)
+
+[node name="victory" type="Node2D"]
+script = ExtResource("1_xiub4")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(560, 222)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_jpao3")
+
+[node name="text" type="Label" parent="."]
+offset_left = 563.0
+offset_top = 336.0
+offset_right = 717.0
+offset_bottom = 385.0
+scale = Vector2(2, 2)
+text = "You Escaped! 
+Press Space To Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="fragments" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(736, 222)
+scale = Vector2(2, 2)
+
+[node name="outlines" type="Node2D" parent="fragments"]
+modulate = Color(0, 0, 0, 1)
+
+[node name="fgo1" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(-1, 0)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo2" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(-1, -1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo3" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(0, -1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo4" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(1, -1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo5" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(1, 0)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo6" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(1, 1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo7" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(0, 1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="fgo8" type="Sprite2D" parent="fragments/outlines"]
+position = Vector2(-1, 1)
+texture = ExtResource("3_6xyub")
+hframes = 6
+
+[node name="0" type="Sprite2D" parent="fragments"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-16, -16)
+texture = SubResource("AtlasTexture_520se")
+hframes = 2
+vframes = 2
+
+[node name="1" type="Sprite2D" parent="fragments"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(16, -16)
+texture = SubResource("AtlasTexture_520se")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="2" type="Sprite2D" parent="fragments"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-16, 16)
+texture = SubResource("AtlasTexture_520se")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="3" type="Sprite2D" parent="fragments"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(16, 16)
+texture = SubResource("AtlasTexture_520se")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="collected" type="Label" parent="fragments"]
+offset_left = -80.0
+offset_top = -64.0
+offset_right = 83.0
+offset_bottom = -41.0
+text = "Fragments Collected:"

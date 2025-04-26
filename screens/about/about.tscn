@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyceo8l045gip"]
+
+[ext_resource type="Script" uid="uid://dav6yo5j351jk" path="res://screens/about/about.gd" id="1_du5j5"]
+
+[node name="about" type="Node2D"]
+script = ExtResource("1_du5j5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1100.0
+offset_bottom = 624.0
+
+[node name="back" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 560.0
+offset_right = 554.0
+offset_bottom = 591.0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+text = "Back"
+
+[node name="about" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 116.0
+offset_bottom = 87.0
+text = "About:"
+
+[node name="stuff" type="Label" parent="."]
+offset_left = 96.0
+offset_top = 96.0
+offset_right = 642.0
+offset_bottom = 171.0
+text = "Made for the GGJam #2 Game Jam, Hosted by Gigantic G Studio
+
+This game takes inspiration from Katana Zero, Sanabi, and Pizza Tower"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw30y8d1qnctb"]
+
+[ext_resource type="Script" uid="uid://jqe8o0ww3uk5" path="res://areas/checkPointArea/check_point_area.gd" id="1_rs4c0"]
+
+[node name="checkPointArea" type="Area2D"]
+collision_layer = 512
+collision_mask = 512
+script = ExtResource("1_rs4c0")

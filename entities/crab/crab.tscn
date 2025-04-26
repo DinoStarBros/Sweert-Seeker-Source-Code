@@ -1,0 +1,380 @@
+[gd_scene load_steps=19 format=3 uid="uid://cwhc7fxd0gyc5"]
+
+[ext_resource type="Script" uid="uid://crnw6ra3ax06v" path="res://entities/crab/crab.gd" id="1_mokfo"]
+[ext_resource type="Script" uid="uid://1maab4nagnab" path="res://StateMachines/crab_states/crabStateMachine.gd" id="2_vquqe"]
+[ext_resource type="Script" uid="uid://dt4qacpb2ict7" path="res://StateMachines/crab_states/walkingCrab.gd" id="3_3t7xy"]
+[ext_resource type="Script" uid="uid://bw1roakdt1mwk" path="res://StateMachines/crab_states/deadCrab.gd" id="4_mokfo"]
+[ext_resource type="Script" uid="uid://6cd4eua4t1fy" path="res://StateMachines/crab_states/hookedCrab.gd" id="5_rgpjo"]
+[ext_resource type="Texture2D" uid="uid://bg2a30g81wo63" path="res://Art/Placeholder/NPCs-child.png" id="6_ts7kb"]
+[ext_resource type="AudioStream" uid="uid://blcay1tfimw0e" path="res://Audio/cardtowersfx/player_hit.wav" id="7_woy0m"]
+[ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="8_solnr"]
+[ext_resource type="Texture2D" uid="uid://c0jpnw00110i" path="res://Art/hitspark.png" id="9_0gsr0"]
+[ext_resource type="AudioStream" uid="uid://cppxtyh63shtf" path="res://Audio/tresure/walkStep.wav" id="9_rgpjo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ogyp"]
+radius = 25.0
+
+[sub_resource type="Curve" id="Curve_yqh0o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_cutij"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitfx/Hitspark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitfx/Hitspark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NpCs-child:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("orbcol:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fd_pivot/hitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sfx/walk:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3337n"]
+resource_name = "death"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hitfx/Hitspark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitfx/Hitspark:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitfx/CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NpCs-child:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(100, 100, 100, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("orbcol:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("sfx/hit1:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("sfx/hit2:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("fd_pivot/hitbox/CollisionShape2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mokfo"]
+resource_name = "hooked"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fd_pivot/hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qampi"]
+resource_name = "loop"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fd_pivot/hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sfx/walk:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cutij"]
+_data = {
+&"RESET": SubResource("Animation_cutij"),
+&"death": SubResource("Animation_3337n"),
+&"hooked": SubResource("Animation_mokfo"),
+&"loop": SubResource("Animation_qampi")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mokfo"]
+radius = 25.0
+
+[node name="crab" type="CharacterBody2D"]
+collision_layer = 70
+collision_mask = 70
+script = ExtResource("1_mokfo")
+
+[node name="orbcol" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ogyp")
+
+[node name="crabStateMachine" type="Node" parent="." node_paths=PackedStringArray("state_text")]
+unique_name_in_owner = true
+script = ExtResource("2_vquqe")
+initial_state = "walking"
+state_text = NodePath("../Label")
+
+[node name="walking" type="Node" parent="crabStateMachine"]
+script = ExtResource("3_3t7xy")
+
+[node name="dead" type="Node" parent="crabStateMachine"]
+script = ExtResource("4_mokfo")
+
+[node name="hooked" type="Node" parent="crabStateMachine"]
+script = ExtResource("5_rgpjo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -47.0
+offset_right = 22.0
+offset_bottom = -24.0
+text = "bruzz"
+
+[node name="NpCs-child" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("6_ts7kb")
+hframes = 4
+vframes = 3
+
+[node name="sfx" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="hit1" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("7_woy0m")
+volume_db = -5.0
+pitch_scale = 1.2
+bus = &"sfx"
+
+[node name="hit2" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("8_solnr")
+volume_db = -5.0
+pitch_scale = 1.5
+bus = &"sfx"
+
+[node name="walk" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("9_rgpjo")
+max_distance = 1000.0
+bus = &"sfx"
+
+[node name="hitfx" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Hitspark" type="Sprite2D" parent="hitfx"]
+visible = false
+position = Vector2(35, 0)
+scale = Vector2(0.5, 0.35)
+texture = ExtResource("9_0gsr0")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="hitfx"]
+emitting = false
+amount = 15
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1900.0
+initial_velocity_max = 2000.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_yqh0o")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_cutij")
+}
+autoplay = "loop"
+
+[node name="fd_pivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="floor_detect" type="RayCast2D" parent="fd_pivot"]
+unique_name_in_owner = true
+position = Vector2(40, 0)
+collision_mask = 2
+
+[node name="wall_detect" type="RayCast2D" parent="fd_pivot"]
+unique_name_in_owner = true
+position = Vector2(30, 0)
+target_position = Vector2(30, 0)
+collision_mask = 2
+
+[node name="hitbox" type="Area2D" parent="fd_pivot"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fd_pivot/hitbox"]
+position = Vector2(32, -1)
+shape = SubResource("CircleShape2D_mokfo")
+
+[connection signal="area_entered" from="fd_pivot/hitbox" to="." method="_on_hitbox_area_entered"]

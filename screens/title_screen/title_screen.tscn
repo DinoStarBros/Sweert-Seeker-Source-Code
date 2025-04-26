@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyox54lys0by8"]
+
+[ext_resource type="Script" uid="uid://ihrntpa0b2kb" path="res://screens/title_screen/title_screen.gd" id="1_4rvf0"]
+[ext_resource type="PackedScene" uid="uid://do3oy3lqr320g" path="res://screens/settingsMenu/settings_menu.tscn" id="2_alfmu"]
+[ext_resource type="PackedScene" uid="uid://cyceo8l045gip" path="res://screens/about/about.tscn" id="3_v18if"]
+[ext_resource type="PackedScene" uid="uid://bo6nqc1pt14j0" path="res://screens/credits/credits.tscn" id="4_fjwv1"]
+
+[node name="title_screen" type="Node2D"]
+script = ExtResource("1_4rvf0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 260.0
+offset_top = 110.0
+offset_right = 447.0
+offset_bottom = 133.0
+scale = Vector2(4, 4)
+text = "Project Treasure Hunter"
+horizontal_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="."]
+offset_left = 474.0
+offset_top = 243.0
+offset_right = 640.0
+offset_bottom = 414.0
+scale = Vector2(2, 2)
+
+[node name="play" type="Button" parent="buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "Play"
+
+[node name="about" type="Button" parent="buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "About"
+
+[node name="settings" type="Button" parent="buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "Settings"
+
+[node name="credits" type="Button" parent="buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "Credits"
+
+[node name="quit" type="Button" parent="buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "Quit
+"
+
+[node name="settingsMenu" parent="." instance=ExtResource("2_alfmu")]
+unique_name_in_owner = true
+visible = false
+offset_left = 90.0
+offset_top = 50.0
+offset_right = 1084.0
+offset_bottom = 671.0
+
+[node name="about" parent="." instance=ExtResource("3_v18if")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(90, 50)
+
+[node name="credits" parent="." instance=ExtResource("4_fjwv1")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(90, 50)
+
+[connection signal="pressed" from="buttons/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="buttons/about" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="buttons/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="buttons/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="buttons/quit" to="." method="_on_quit_pressed"]

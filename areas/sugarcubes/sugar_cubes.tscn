@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://baw2spqrboxvb"]
+
+[ext_resource type="TileSet" uid="uid://bdopjmolb8531" path="res://placeholder_tiles.tres" id="1_1ssrk"]
+[ext_resource type="Script" uid="uid://va4kajuonnml" path="res://areas/sugarcubes/sugar_cubes.gd" id="1_x5ern"]
+
+[node name="sugar_cubes" type="TileMapLayer"]
+tile_set = ExtResource("1_1ssrk")
+script = ExtResource("1_x5ern")

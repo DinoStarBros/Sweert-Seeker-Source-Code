@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj5jbn7aere7t"]
+
+[ext_resource type="Script" uid="uid://bkxli8ikwj2xb" path="res://timer/timer.gd" id="1_qmwag"]
+
+[node name="timer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qmwag")
+
+[node name="stuff" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Min" type="Label" parent="stuff"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00:"
+
+[node name="Sec" type="Label" parent="stuff"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00."
+
+[node name="MSec" type="Label" parent="stuff"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
