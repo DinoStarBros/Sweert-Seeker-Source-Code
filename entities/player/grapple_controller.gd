@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	
 	%blue.rotation_degrees = %ray_pivot.rotation_degrees
 	
-	if Input.is_action_just_pressed("Grapple") and player.sm.current_state.name != "dead":
+	if Input.is_action_just_pressed("Grapple") and player.sm.current_state.name != "dead" and player.sm.current_state.name != "portalSlurp" and player.sm.current_state.name != "portalEnter":
 		launch()
 	if not Input.is_action_pressed("Grapple"): #and swinging:
 		retract()
@@ -133,7 +133,7 @@ func swing(_delta:float)-> void:
 				# Dash toward the enemy when the hook hits, 
 				# When the player hasn't collided with the enemy yet
 				
-				#player.global_position = player.grapple_controller.raycast_collider.global_position + Vector2(-30, -30)
+				#player.global_position = player.grapple_controller.raycast_collider.global_position + Vector2(-30 * x_dir, -30)
 				%hurcol.disabled = true
 				player.velocity = player.global_position.direction_to(target) * 3000
 		

@@ -9,7 +9,7 @@ var enemy_scenes : Array[PackedScene] = [
 	preload("res://entities/sentry/sentry.tscn"),
 ]
 
-@export var enemy_index : int ## 0 = Crab : 1 = Drone : 2 = Mechorilla : 3 = Orb : 4 = Sentry
+@export var enemy_index : int = 0 ## 0 = Crab : 1 = Drone : 2 = Mechorilla : 3 = Orb : 4 = Sentry
 
 func play_anim() -> void:
 	%anim.play("spawn")

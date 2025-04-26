@@ -4,8 +4,6 @@ extends StatePlr
 func on_enter()-> void:
 	p.slashes_in_air = 0
 	p.anim.play("hook")
-	#if not p.grapple_controller.swinging:
-	#	%plrcol.disabled = true
 	pass
 
 func process(delta: float)-> void:

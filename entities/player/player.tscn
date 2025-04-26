@@ -1,7 +1,8 @@
-[gd_scene load_steps=72 format=3 uid="uid://chfhw74nigg0t"]
+[gd_scene load_steps=73 format=3 uid="uid://chfhw74nigg0t"]
 
 [ext_resource type="Script" uid="uid://dc7q4go3xow7l" path="res://entities/player/player.gd" id="1_symyc"]
 [ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_abrql"]
+[ext_resource type="Texture2D" uid="uid://d2pt2wu7bo32y" path="res://Art/treasureHunter/mouse-sprites-Sheet.png" id="2_geky7"]
 [ext_resource type="PackedScene" uid="uid://byp4l1f8qw63g" path="res://camera/camera.tscn" id="3_sglur"]
 [ext_resource type="Script" uid="uid://rkcs2jtotkmj" path="res://StateMachines/player_states/player_stateMachine.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://betkg2ge27k2g" path="res://StateMachines/player_states/walkPlr.gd" id="6_wvtmh"]
@@ -40,8 +41,8 @@
 [ext_resource type="AudioStream" uid="uid://wwky8hohtk1h" path="res://Audio/tresuremusic/lvl2.mp3" id="38_qwspa"]
 [ext_resource type="AudioStream" uid="uid://djkyy2lk54oc7" path="res://Audio/tresuremusic/lvl3.mp3" id="39_r633c"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mtric"]
-radius = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_geky7"]
+size = Vector2(23, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qpopc"]
 radius = 1.0
@@ -216,6 +217,66 @@ tracks/13/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("mousesprites:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("mousesprites:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("mousesprites:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("mousesprites:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -8)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("mousesprites:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_gt4e4"]
 resource_name = "death"
@@ -240,10 +301,10 @@ tracks/1/path = NodePath("sfx/hurt:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 1.2, 1.4]
+"values": [1.0, 2.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -337,6 +398,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("mousesprites:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 0, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(100, 100, 100, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("mousesprites:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
 
 [sub_resource type="Animation" id="Animation_26q78"]
 resource_name = "fall"
@@ -378,6 +463,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0.234375, 0.445312), Vector2(0.3, 0.4)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mousesprites:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
 
 [sub_resource type="Animation" id="Animation_eyb6c"]
 resource_name = "grappleBoost"
@@ -407,6 +504,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mousesprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37]
+}
 
 [sub_resource type="Animation" id="Animation_mtric"]
 resource_name = "hook"
@@ -423,6 +532,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mousesprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37]
 }
 
 [sub_resource type="Animation" id="Animation_gx6sm"]
@@ -465,10 +586,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mousesprites:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 19, 20]
+}
 
 [sub_resource type="Animation" id="Animation_7thud"]
 resource_name = "idle"
-length = 0.1
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -493,6 +626,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mousesprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mousesprites:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mousesprites:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_bls4j"]
@@ -546,6 +715,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mousesprites:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mousesprites:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -8)]
 }
 
 [sub_resource type="Animation" id="Animation_vewsg"]
@@ -648,6 +841,54 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.5, 0.2]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("mousesprites:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.5664]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("mousesprites:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("mousesprites:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, -8), Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("mousesprites:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_bectd"]
 resource_name = "slash"
@@ -749,11 +990,23 @@ tracks/7/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("mousesprites:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 0]
+}
 
 [sub_resource type="Animation" id="Animation_sglur"]
 resource_name = "walk"
-length = 0.2
-step = 0.05
+length = 0.6
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -797,10 +1050,10 @@ tracks/3/path = NodePath("sfx/walk:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false, true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -814,10 +1067,46 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mousesprites:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -8)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("mousesprites:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 9, 10]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("mousesprites:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_8q4fm"]
 resource_name = "wallClimb"
-length = 0.2
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -831,9 +1120,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mousesprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31]
+}
 
 [sub_resource type="Animation" id="Animation_2soq1"]
 resource_name = "wallCling"
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -847,9 +1149,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mousesprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25]
+}
 
 [sub_resource type="Animation" id="Animation_np63p"]
 resource_name = "wallJump"
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -874,6 +1189,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mousesprites:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fkugw"]
@@ -1013,15 +1340,14 @@ _data = {
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvtmh"]
-radius = 46.0
-height = 120.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_geky7"]
+radius = 32.0156
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7thud"]
-size = Vector2(5, 46)
+size = Vector2(5, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1qjk"]
-size = Vector2(5, 46)
+size = Vector2(5, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50fht"]
 size = Vector2(701.5, 400)
@@ -1115,14 +1441,23 @@ size = Vector2(46, 60)
 script = ExtResource("1_symyc")
 metadata/_edit_vertical_guides_ = [-240.0]
 
+[node name="mousesprites" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("2_geky7")
+hframes = 38
+
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 z_index = 3
 scale = Vector2(0.3, 0.4)
 texture = ExtResource("2_abrql")
 
 [node name="plrcol" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_mtric")
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_geky7")
 
 [node name="roomDetectArea" type="Area2D" parent="."]
 collision_layer = 2560
@@ -1139,7 +1474,7 @@ collision_mask = 4096
 shape = SubResource("CircleShape2D_qpopc")
 
 [node name="Camera" parent="." instance=ExtResource("3_sglur")]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
@@ -1217,6 +1552,7 @@ bus = &"sfx"
 [node name="hurt" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("19_ghoj8")
 volume_db = -5.0
+pitch_scale = 2.0
 bus = &"sfx"
 
 [node name="hurt2" type="AudioStreamPlayer" parent="sfx"]
@@ -1361,7 +1697,6 @@ collision_mask = 4
 unique_name_in_owner = true
 visible = false
 z_index = 2
-position = Vector2(20, 0)
 scale = Vector2(1.3, 0.65)
 texture = ExtResource("9_bectd")
 flip_v = true
@@ -1373,14 +1708,14 @@ frame = 2
 unique_name_in_owner = true
 position = Vector2(47, 0)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_wvtmh")
+shape = SubResource("CircleShape2D_geky7")
 disabled = true
 
 [node name="wall_clings" type="Node2D" parent="."]
 
 [node name="left_wc" type="Area2D" parent="wall_clings"]
 unique_name_in_owner = true
-position = Vector2(-20, 0)
+position = Vector2(-27, 0)
 collision_layer = 128
 collision_mask = 128
 
@@ -1389,7 +1724,7 @@ shape = SubResource("RectangleShape2D_7thud")
 
 [node name="right_wc" type="Area2D" parent="wall_clings"]
 unique_name_in_owner = true
-position = Vector2(20, 0)
+position = Vector2(27, 0)
 collision_layer = 128
 collision_mask = 128
 

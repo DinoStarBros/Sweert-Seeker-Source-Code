@@ -29,7 +29,14 @@ func _ready() -> void:
 
 const terminal_velocity_fall : int = 1500
 var enable_gravity : bool = true
+var x_dir : int = 1
 func _physics_process(delta: float) -> void:
+	#print( %mousesprites.position )
+	%mousesprites.flip_h = x_dir == -1
+	if Input.is_action_just_pressed("Right"):
+		x_dir = 1
+	elif Input.is_action_just_pressed("Left"):
+		x_dir = -1
 	
 	move_and_slide()
 	if not is_on_floor():

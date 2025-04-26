@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b42hof101qapn"]
+[gd_scene load_steps=18 format=3 uid="uid://b42hof101qapn"]
 
 [ext_resource type="Script" uid="uid://qomqo16fgowx" path="res://entities/sentry/sentry.gd" id="1_q78tv"]
 [ext_resource type="Script" uid="uid://6qgl1kvc43pr" path="res://StateMachines/sentry_states/sentryStateMachine.gd" id="2_7utqm"]
@@ -187,6 +187,9 @@ _data = {
 &"loop": SubResource("Animation_qampi")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q78tv"]
+radius = 500.0
+
 [node name="sentry" type="CharacterBody2D"]
 collision_layer = 70
 collision_mask = 70
@@ -272,6 +275,14 @@ autoplay = "loop"
 
 [node name="plr_detector" type="RayCast2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-500, 0)
 target_position = Vector2(1000, 0)
-collision_mask = 10
+collision_mask = 8
 collide_with_areas = true
+collide_with_bodies = false
+
+[node name="plr_detect" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plr_detect"]
+shape = SubResource("CircleShape2D_q78tv")

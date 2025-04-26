@@ -16,12 +16,14 @@ func process(_delta: float)-> void:
 	
 	if Input.is_action_pressed("Down"):
 		p.velocity.y *= 1
+		p.anim.play("wallCling")
 		
 	elif Input.is_action_pressed("Up"):
 		p.velocity.y = -p.max_speed * .7
 		p.anim.play("wallClimb")
 	else:
 		if p.velocity.y > 0:
+			p.anim.play("wallCling")
 			p.velocity.y *= 0.8
 
 	if p.is_on_floor():

@@ -2,8 +2,8 @@ extends StateOrb
 
 var shoot_timer : float = 0
 
-const l_shootime : float = 0.1
-const r_shootime : float = 0.2
+const l_shootime : float = 0.4
+const r_shootime : float = 0.5
 func on_enter()-> void:
 	shoot_timer = randf_range(l_shootime, r_shootime)
 
