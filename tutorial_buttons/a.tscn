@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://vxfnl5i2vrpc"]
+
+[ext_resource type="Texture2D" uid="uid://bt6ig37ogacc5" path="res://Art/treasureHunter/keys tutor-Sheet.png" id="1_l82pa"]
+
+[sub_resource type="Animation" id="Animation_l82pa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeysTutor-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_fr77o"]
+resource_name = "loop"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeysTutor-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkpcp"]
+_data = {
+&"RESET": SubResource("Animation_l82pa"),
+&"loop": SubResource("Animation_fr77o")
+}
+
+[node name="a" type="Node2D"]
+
+[node name="KeysTutor-sheet" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_l82pa")
+hframes = 8
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tkpcp")
+}
+autoplay = "loop"

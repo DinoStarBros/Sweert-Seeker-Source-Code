@@ -38,4 +38,4 @@ func spawn_enemy(n : float) -> void:
 
 func _on_escapeshaketimer_timeout() -> void:
 	if g.escape:
-		g.camera.screen_shake(8, 1)
+		g.camera.screen_shake(10, 1)

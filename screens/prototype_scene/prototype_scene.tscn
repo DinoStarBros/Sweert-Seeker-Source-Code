@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b64yf2mjdbqo8"]
+[gd_scene load_steps=32 format=4 uid="uid://b64yf2mjdbqo8"]
 
 [ext_resource type="Script" uid="uid://dgyvmu81spml1" path="res://screens/prototype_scene/prototype_scene.gd" id="1_8xkma"]
 [ext_resource type="PackedScene" uid="uid://chfhw74nigg0t" path="res://entities/player/player.tscn" id="2_krspe"]
@@ -13,9 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://baw2spqrboxvb" path="res://areas/sugarcubes/sugar_cubes.tscn" id="11_0l1fx"]
 [ext_resource type="PackedScene" uid="uid://bw30y8d1qnctb" path="res://areas/checkPointArea/check_point_area.tscn" id="12_jonxr"]
 [ext_resource type="Texture2D" uid="uid://dqtekxlfwqh4k" path="res://Art/treasureHunter/lv1_bg_layer2.png" id="13_2dgtd"]
+[ext_resource type="LabelSettings" uid="uid://chf0qf85n0sm4" path="res://menu_font.tres" id="13_o24g1"]
+[ext_resource type="PackedScene" uid="uid://dmmiehbjvl7r2" path="res://tutorial_buttons/wasd/wasd.tscn" id="14_4fe0x"]
 [ext_resource type="Texture2D" uid="uid://b6irjw713dual" path="res://Art/treasureHunter/lv1_bg_layer3.png" id="14_h7k3o"]
 [ext_resource type="Texture2D" uid="uid://0nv44gaf4s5p" path="res://Art/treasureHunter/lv1_bg_layer4.png" id="15_o24g1"]
+[ext_resource type="PackedScene" uid="uid://du703jla4061v" path="res://tutorial_buttons/space/space.tscn" id="15_ul580"]
 [ext_resource type="Texture2D" uid="uid://dmvimw58vgoy6" path="res://Art/treasureHunter/lv1_bg_layer5.png" id="16_4fe0x"]
+[ext_resource type="PackedScene" uid="uid://vxfnl5i2vrpc" path="res://tutorial_buttons/a.tscn" id="16_oyuwh"]
+[ext_resource type="PackedScene" uid="uid://d47ulv2f0ohx" path="res://tutorial_buttons/d.tscn" id="17_4ucjn"]
 [ext_resource type="Texture2D" uid="uid://ur4rfq2c40aw" path="res://Art/treasureHunter/lv1_bg_layer6.png" id="17_ul580"]
 [ext_resource type="Texture2D" uid="uid://cxdfwnli4j0j1" path="res://Art/treasureHunter/lv1_bg_layer7.png" id="18_tk082"]
 [ext_resource type="PackedScene" uid="uid://c1ptfqfep6dfv" path="res://levelDetails/torch.tscn" id="19_h7k3o"]
@@ -300,24 +305,40 @@ Press S to go down walls
 Play around, give us feedback "
 
 [node name="1" type="Label" parent="tutorial_text"]
-offset_left = -272.0
-offset_top = 368.0
-offset_right = 7.0
-offset_bottom = 469.0
+offset_top = 194.0
+offset_right = 279.0
+offset_bottom = 295.0
 scale = Vector2(2, 2)
-text = " - Use A and D to move left and right
- - Spacebar to Jump"
+text = " - Movement /  Movimento 
+
+- Jump / Saltar"
+label_settings = ExtResource("13_o24g1")
+
+[node name="wasd" parent="tutorial_text/1" instance=ExtResource("14_4fe0x")]
+position = Vector2(-40, 7)
+
+[node name="space" parent="tutorial_text/1" instance=ExtResource("15_ul580")]
+position = Vector2(-28, 64)
 
 [node name="2" type="Label" parent="tutorial_text"]
-offset_left = 3312.0
-offset_top = 448.0
-offset_right = 3608.0
-offset_bottom = 549.0
+offset_left = 3288.0
+offset_top = 416.0
+offset_right = 3584.0
+offset_bottom = 517.0
 scale = Vector2(2, 2)
-text = "You can cling on to walls.
- - Press W or S to go Up or Down a wall
- - Press Space to Jump off of a wall
+text = "Climb Up Walls.
+
 "
+label_settings = ExtResource("13_o24g1")
+
+[node name="a" parent="tutorial_text/2" instance=ExtResource("16_oyuwh")]
+position = Vector2(104, -10)
+
+[node name="d" parent="tutorial_text/2" instance=ExtResource("17_4ucjn")]
+position = Vector2(132, -10)
+
+[node name="space" parent="tutorial_text/2" instance=ExtResource("15_ul580")]
+position = Vector2(21, -10)
 
 [node name="3" type="Label" parent="tutorial_text"]
 offset_left = 1664.0
@@ -327,6 +348,7 @@ offset_bottom = -283.0
 scale = Vector2(2, 2)
 text = " - Left Click to Knife Slash
 It can be used to slay enemies, or as a dash"
+label_settings = ExtResource("13_o24g1")
 
 [node name="4" type="Label" parent="tutorial_text"]
 offset_left = -368.0
@@ -337,6 +359,7 @@ scale = Vector2(2, 2)
 text = " - Right Click to Grapple
  - Aim it on a wall / ceiling
  - It works best while in midair"
+label_settings = ExtResource("13_o24g1")
 
 [node name="5" type="Label" parent="tutorial_text"]
 offset_left = -128.0
@@ -345,6 +368,7 @@ offset_right = 205.0
 offset_bottom = -1099.0
 scale = Vector2(2, 2)
 text = "----->"
+label_settings = ExtResource("13_o24g1")
 
 [node name="6" type="Label" parent="tutorial_text"]
 offset_left = 864.0
@@ -355,6 +379,7 @@ scale = Vector2(2, 2)
 text = " - Press Shift while you're Grappled
  - In order to GRAPPLE BOOST
  - Gain CRAZY speed in the middle of a grapple, launching yourself"
+label_settings = ExtResource("13_o24g1")
 
 [node name="7" type="Label" parent="tutorial_text"]
 offset_left = 2192.0
@@ -365,6 +390,7 @@ scale = Vector2(2, 2)
 text = "Your Grappling Hook can also be used as a weapon
  - Aim and Fire your Grappling  at an Enemy
  to see it in action!"
+label_settings = ExtResource("13_o24g1")
 
 [node name="8" type="Label" parent="tutorial_text"]
 offset_left = 3088.0
@@ -374,6 +400,7 @@ offset_bottom = -1739.0
 scale = Vector2(2, 2)
 text = " - Press Space while Grappled to Dash
  directly to the Hook"
+label_settings = ExtResource("13_o24g1")
 
 [node name="9" type="Label" parent="tutorial_text"]
 offset_left = 3443.0
@@ -383,6 +410,7 @@ offset_bottom = -2057.0
 rotation = -1.0472
 scale = Vector2(2, 2)
 text = "--->"
+label_settings = ExtResource("13_o24g1")
 
 [node name="10" type="Label" parent="tutorial_text"]
 offset_left = 1760.0
@@ -391,9 +419,8 @@ offset_right = 2079.0
 offset_bottom = -2587.0
 scale = Vector2(2, 2)
 text = "- Collect The Candy Gem By Slashing It
-- Prepare And Brace Yourself to
-
-GET OUTTA HERE!@!! !!!@!11111!"
+- Prepare To ESCAPE!!!"
+label_settings = ExtResource("13_o24g1")
 
 [node name="escapeshaketimer" type="Timer" parent="."]
 wait_time = 2.0

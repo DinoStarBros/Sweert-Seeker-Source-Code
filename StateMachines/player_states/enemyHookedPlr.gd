@@ -5,8 +5,10 @@ func on_enter()-> void:
 	p.slashes_in_air = 0.5
 	%HeartJavelin.show()
 	p.velocity = Vector2.ZERO
+	p.anim.play("enemyHooked")
 	p.grapple_controller.raycast_collider.sm.change_state("hooked")
 	latch_duration = 2
+	%"MouseTutor-sheet".show()
 
 func process(delta: float)-> void:
 	p.velocity = Vector2.ZERO
@@ -39,3 +41,4 @@ func process(delta: float)-> void:
 
 func on_exit()-> void:
 	%HeartJavelin.hide()
+	%"MouseTutor-sheet".hide()
