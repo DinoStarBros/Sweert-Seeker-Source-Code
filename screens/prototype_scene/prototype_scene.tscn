@@ -59,7 +59,7 @@ enabled_during_escape = true
 unique_name_in_owner = true
 
 [node name="Player" parent="entities" instance=ExtResource("2_krspe")]
-position = Vector2(2736, -1600)
+position = Vector2(-400, 447)
 
 [node name="crab" parent="entities" instance=ExtResource("4_vxbea")]
 position = Vector2(1408, -352)

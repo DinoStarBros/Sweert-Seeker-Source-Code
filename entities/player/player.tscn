@@ -1441,6 +1441,7 @@ metadata/_edit_vertical_guides_ = [-240.0]
 
 [node name="Healthcircle-sheet" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(0, -60)
 scale = Vector2(2, 2)
 texture = ExtResource("2_qwspa")
@@ -1449,6 +1450,7 @@ frame = 4
 
 [node name="mousesprites" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+z_index = 1
 position = Vector2(-3, -8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_geky7")
