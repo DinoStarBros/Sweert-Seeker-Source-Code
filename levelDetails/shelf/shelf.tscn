@@ -8,7 +8,7 @@ script = ExtResource("1_lqfmq")
 
 [node name="LevelDetails-sheet" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -48)
-scale = Vector2(1.5, 1.5)
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
 texture = ExtResource("1_bnikq")
 hframes = 5

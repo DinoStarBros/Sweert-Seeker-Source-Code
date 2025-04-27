@@ -1,9 +1,17 @@
 extends Node2D
 
+var value : int = 0
 func _ready() -> void:
-
-	%"LevelDetails-sheet".frame = randi_range(0, 2)
-	if %"LevelDetails-sheet".frame == 2:
+	value = randi_range(0, 2)
+	%"LevelDetails-sheet".frame = value
+	
+	if value == 2:
 		modulate = Color.SANDY_BROWN
 	else:
-		modulate = Color.POWDER_BLUE
+		match value:
+			0:
+				modulate = Color.PURPLE
+			1:
+				modulate = Color.BLUE_VIOLET
+			2:
+				modulate = Color.POWDER_BLUE
