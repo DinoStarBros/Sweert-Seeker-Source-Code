@@ -36,11 +36,12 @@
 [ext_resource type="PackedScene" uid="uid://do3oy3lqr320g" path="res://screens/settingsMenu/settings_menu.tscn" id="27_wq0jh"]
 [ext_resource type="Texture2D" uid="uid://elkxoju041sl" path="res://Art/Stuff2/poker_hip-Sheet.png" id="28_gt4e4"]
 [ext_resource type="PackedScene" uid="uid://bj5jbn7aere7t" path="res://timer/timer.tscn" id="29_24ehl"]
+[ext_resource type="Texture2D" uid="uid://ciqqnr35ia7lu" path="res://Art/treasureHunter/gemma.png" id="34_r633c"]
 [ext_resource type="AudioStream" uid="uid://sa2clmn47buv" path="res://Audio/tresuremusic/escape.mp3" id="35_wy7bt"]
 [ext_resource type="AudioStream" uid="uid://c35xbkf786o38" path="res://Audio/tresuremusic/tutorial.mp3" id="36_wy7bt"]
 [ext_resource type="AudioStream" uid="uid://d2bwey6kfygc1" path="res://Audio/tresuremusic/lvl1.mp3" id="37_geky7"]
-[ext_resource type="AudioStream" uid="uid://wwky8hohtk1h" path="res://Audio/tresuremusic/lvl2.mp3" id="38_qwspa"]
-[ext_resource type="AudioStream" uid="uid://djkyy2lk54oc7" path="res://Audio/tresuremusic/lvl3.mp3" id="39_r633c"]
+[ext_resource type="AudioStream" uid="uid://wwky8hohtk1h" path="res://Audio/tresuremusic/lvl3.mp3" id="38_qwspa"]
+[ext_resource type="AudioStream" uid="uid://djkyy2lk54oc7" path="res://Audio/tresuremusic/lvl2.mp3" id="39_r633c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geky7"]
 size = Vector2(23, 54)
@@ -1429,10 +1430,6 @@ _data = {
 &"in&out": SubResource("Animation_qpopc")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24ehl"]
-atlas = ExtResource("28_gt4e4")
-region = Rect2(192, 0, 64, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2kln"]
 size = Vector2(46, 60)
 
@@ -1483,6 +1480,7 @@ collision_mask = 4096
 shape = SubResource("CircleShape2D_qpopc")
 
 [node name="Camera" parent="." instance=ExtResource("3_sglur")]
+zoom = Vector2(0.6, 0.6)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
@@ -1851,7 +1849,7 @@ hframes = 6
 unique_name_in_owner = true
 visible = false
 position = Vector2(-16, -16)
-texture = SubResource("AtlasTexture_24ehl")
+texture = ExtResource("34_r633c")
 hframes = 2
 vframes = 2
 
@@ -1859,7 +1857,7 @@ vframes = 2
 unique_name_in_owner = true
 visible = false
 position = Vector2(16, -16)
-texture = SubResource("AtlasTexture_24ehl")
+texture = ExtResource("34_r633c")
 hframes = 2
 vframes = 2
 frame = 1
@@ -1868,7 +1866,7 @@ frame = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(-16, 16)
-texture = SubResource("AtlasTexture_24ehl")
+texture = ExtResource("34_r633c")
 hframes = 2
 vframes = 2
 frame = 2
@@ -1877,7 +1875,7 @@ frame = 2
 unique_name_in_owner = true
 visible = false
 position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_24ehl")
+texture = ExtResource("34_r633c")
 hframes = 2
 vframes = 2
 frame = 3
@@ -1982,26 +1980,31 @@ process_mode = 3
 [node name="escape" type="AudioStreamPlayer" parent="music"]
 unique_name_in_owner = true
 stream = ExtResource("35_wy7bt")
+volume_db = -5.0
 bus = &"music"
 
 [node name="tutorial" type="AudioStreamPlayer" parent="music"]
 unique_name_in_owner = true
 stream = ExtResource("36_wy7bt")
+volume_db = -5.0
 bus = &"music"
 
 [node name="lvl1" type="AudioStreamPlayer" parent="music"]
 unique_name_in_owner = true
 stream = ExtResource("37_geky7")
-bus = &"music"
-
-[node name="lvl2" type="AudioStreamPlayer" parent="music"]
-unique_name_in_owner = true
-stream = ExtResource("38_qwspa")
+volume_db = -5.0
 bus = &"music"
 
 [node name="lvl3" type="AudioStreamPlayer" parent="music"]
 unique_name_in_owner = true
+stream = ExtResource("38_qwspa")
+volume_db = -5.0
+bus = &"music"
+
+[node name="lvl2" type="AudioStreamPlayer" parent="music"]
+unique_name_in_owner = true
 stream = ExtResource("39_r633c")
+volume_db = -5.0
 bus = &"music"
 
 [connection signal="area_entered" from="roomDetectArea" to="Camera" method="_on_room_detect_area_area_entered"]

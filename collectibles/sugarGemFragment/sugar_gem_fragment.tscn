@@ -1,16 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://beyud3f5rupgr"]
+[gd_scene load_steps=12 format=3 uid="uid://beyud3f5rupgr"]
 
 [ext_resource type="Script" uid="uid://oav6hb1f3s41" path="res://collectibles/sugarGemFragment/sugar_gem_fragment.gd" id="1_on317"]
-[ext_resource type="Texture2D" uid="uid://elkxoju041sl" path="res://Art/Stuff2/poker_hip-Sheet.png" id="2_h6i3b"]
+[ext_resource type="Texture2D" uid="uid://ciqqnr35ia7lu" path="res://Art/treasureHunter/gemma.png" id="2_kgspp"]
 [ext_resource type="AudioStream" uid="uid://blcdsi62f20ft" path="res://Audio/tresure/slashGem.wav" id="3_kgspp"]
 [ext_resource type="AudioStream" uid="uid://cr3paka74inc0" path="res://Audio/splashtownSFX/Sweep.wav" id="4_kgspp"]
+[ext_resource type="Texture2D" uid="uid://b2e50hn2busxu" path="res://Art/Stuff2/2d_lights_and_shadows_neutral_point_light.webp" id="5_lkqbd"]
+[ext_resource type="AudioStream" uid="uid://ckpbdit0d82u7" path="res://Audio/calming-rain-257596.mp3" id="6_new50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_on317"]
 radius = 64.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6i3b"]
-atlas = ExtResource("2_h6i3b")
-region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="Animation" id="Animation_8h44c"]
 length = 0.001
@@ -142,14 +140,14 @@ scale = Vector2(2, 2)
 [node name="0" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
 position = Vector2(-16, -16)
-texture = SubResource("AtlasTexture_h6i3b")
+texture = ExtResource("2_kgspp")
 hframes = 2
 vframes = 2
 
 [node name="1" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
 position = Vector2(16, -16)
-texture = SubResource("AtlasTexture_h6i3b")
+texture = ExtResource("2_kgspp")
 hframes = 2
 vframes = 2
 frame = 1
@@ -157,7 +155,7 @@ frame = 1
 [node name="2" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
 position = Vector2(-16, 16)
-texture = SubResource("AtlasTexture_h6i3b")
+texture = ExtResource("2_kgspp")
 hframes = 2
 vframes = 2
 frame = 2
@@ -165,7 +163,7 @@ frame = 2
 [node name="3" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
 position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_h6i3b")
+texture = ExtResource("2_kgspp")
 hframes = 2
 vframes = 2
 frame = 3
@@ -190,6 +188,34 @@ bus = &"sfx"
 unique_name_in_owner = true
 stream = ExtResource("4_kgspp")
 pitch_scale = 0.7
+bus = &"sfx"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.0570641, 0.723583, 0.0479947, 1)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("5_lkqbd")
+texture_scale = 15.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emission_shape = 1
+emission_sphere_radius = 128.0
+gravity = Vector2(0, -200)
+angular_velocity_min = -300.0
+angular_velocity_max = 300.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+color = Color(0.0628347, 0.876262, 0.0530706, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="shiiiing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_new50")
+volume_db = -10.0
+pitch_scale = 15.0
+autoplay = true
 bus = &"sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

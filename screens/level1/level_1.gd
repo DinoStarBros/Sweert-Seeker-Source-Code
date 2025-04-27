@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
+	
 	g.gem_fragments_collected.clear()
 	g.escape_time = 180
 	g.escape = false

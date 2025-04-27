@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ptfqfep6dfv"]
+
+[ext_resource type="Texture2D" uid="uid://b75xaxghpv4js" path="res://Art/treasureHunter/torch.png" id="1_3hhei"]
+[ext_resource type="Texture2D" uid="uid://b2e50hn2busxu" path="res://Art/Stuff2/2d_lights_and_shadows_neutral_point_light.webp" id="2_apnt7"]
+
+[sub_resource type="Animation" id="Animation_apnt7"]
+resource_name = "loop"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_jpn58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Torch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpn58"]
+_data = {
+&"RESET": SubResource("Animation_jpn58"),
+&"loop": SubResource("Animation_apnt7")
+}
+
+[node name="torch" type="Node2D"]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jpn58")
+}
+autoplay = "loop"
+
+[node name="Torch" type="Sprite2D" parent="."]
+texture = ExtResource("1_3hhei")
+hframes = 3
+frame = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.497118, 0.150603, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("2_apnt7")
+texture_scale = 1.3

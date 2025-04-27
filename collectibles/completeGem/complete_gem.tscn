@@ -1,12 +1,112 @@
 [gd_scene load_steps=12 format=3 uid="uid://qcxm772t6ot2"]
 
 [ext_resource type="Script" uid="uid://cdqq2vdu0qhs0" path="res://collectibles/completeGem/complete_gem.gd" id="1_ocs64"]
-[ext_resource type="Texture2D" uid="uid://elkxoju041sl" path="res://Art/Stuff2/poker_hip-Sheet.png" id="2_k6wjt"]
 [ext_resource type="AudioStream" uid="uid://dxej787v3b1xy" path="res://Audio/tresure/slashCompleteGem.wav" id="3_5o136"]
 [ext_resource type="AudioStream" uid="uid://hbjph6hq0fu3" path="res://Audio/jetslash sfx/SFX/Roblox Explosion Sound Effect.wav" id="4_yxb2c"]
+[ext_resource type="Texture2D" uid="uid://ldkxh82a080a" path="res://Art/treasureHunter/gemma holder.png" id="5_64b8i"]
+[ext_resource type="Texture2D" uid="uid://ciqqnr35ia7lu" path="res://Art/treasureHunter/gemma.png" id="6_ge5lb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ocs64"]
 radius = 128.0
+
+[sub_resource type="Animation" id="Animation_5o136"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("onscreenfx/white_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("onscreenfx/white_screen:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("onscreenfx/sauiohsdfaa:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("onscreenfx/sauiohsdfaa:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.299)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fragments:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("fragments:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GemmaHolder:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GemmaHolder:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ocs64"]
 resource_name = "collect"
@@ -95,10 +195,35 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GemmaHolder:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GemmaHolder:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_k6wjt"]
 resource_name = "loop"
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -159,80 +284,17 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_5o136"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("onscreenfx/white_screen:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("onscreenfx/white_screen:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("onscreenfx/sauiohsdfaa:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("onscreenfx/sauiohsdfaa:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.299)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("fragments:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("fragments:modulate")
+tracks/5/path = NodePath("fragments:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(0, -20), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5o136"]
@@ -241,10 +303,6 @@ _data = {
 &"collect": SubResource("Animation_ocs64"),
 &"loop": SubResource("Animation_k6wjt")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5o136"]
-atlas = ExtResource("2_k6wjt")
-region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5o136"]
 outline_size = 9
@@ -257,6 +315,7 @@ script = ExtResource("1_ocs64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ocs64")
+disabled = true
 
 [node name="anim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -270,80 +329,33 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 scale = Vector2(3, 3)
 
-[node name="outlines" type="Node2D" parent="fragments"]
-modulate = Color(0, 0, 0, 1)
-
-[node name="fgo1" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(-1, 0)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo2" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(-1, -1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo3" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(0, -1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo4" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(1, -1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo5" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(1, 0)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo6" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(1, 1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo7" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(0, 1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
-[node name="fgo8" type="Sprite2D" parent="fragments/outlines"]
-position = Vector2(-1, 1)
-texture = ExtResource("2_k6wjt")
-hframes = 6
-
 [node name="0" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-16, -16)
-texture = SubResource("AtlasTexture_5o136")
+texture = ExtResource("6_ge5lb")
 hframes = 2
 vframes = 2
 
 [node name="1" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(16, -16)
-texture = SubResource("AtlasTexture_5o136")
+texture = ExtResource("6_ge5lb")
 hframes = 2
 vframes = 2
 frame = 1
 
 [node name="2" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-16, 16)
-texture = SubResource("AtlasTexture_5o136")
+texture = ExtResource("6_ge5lb")
 hframes = 2
 vframes = 2
 frame = 2
 
 [node name="3" type="Sprite2D" parent="fragments"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_5o136")
+texture = ExtResource("6_ge5lb")
 hframes = 2
 vframes = 2
 frame = 3
@@ -379,6 +391,11 @@ unique_name_in_owner = true
 stream = ExtResource("4_yxb2c")
 volume_db = -5.0
 bus = &"sfx"
+
+[node name="GemmaHolder" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(2, 2)
+texture = ExtResource("5_64b8i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
