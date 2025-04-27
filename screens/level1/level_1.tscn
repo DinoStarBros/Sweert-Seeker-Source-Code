@@ -172,10 +172,6 @@ enemy_index = 2
 position = Vector2(2352, -5840)
 enemy_index = 1
 
-[node name="enemy_spawner3" parent="encounters/ea2" instance=ExtResource("8_yccel")]
-position = Vector2(832, -5936)
-enemy_index = 1
-
 [node name="enemy_spawner4" parent="encounters/ea2" instance=ExtResource("8_yccel")]
 position = Vector2(2512, -5488)
 
@@ -192,16 +188,8 @@ shape = SubResource("RectangleShape2D_qk5j1")
 tile_map_data = PackedByteArray("AACn/2L/AwAAAAAAAGCo/2L/AwAAAAAAAGCp/2L/AwAAAAAAAGCq/2L/AwAAAAAAAGCr/2L/AwAAAAAAAGCs/2L/AwAAAAAAAGCt/2L/AwAAAAAAAGCu/2L/AwAAAAAAAGCv/2L/AwAAAAAAAGCw/2L/AwAAAAAAAGCx/2L/AwAAAAAAAGCy/2L/AwAAAAAAAGCz/2L/AwAAAAAAAGC0/2L/AwAAAAAAAGC1/2L/AwAAAAAAAGC2/2L/AwAAAAAAAGC3/2L/AwAAAAAAAGC4/2L/AwAAAAAAAGC5/2L/AwAAAAAAAGC6/2L/AwAAAAAAAGC7/2L/AwAAAAAAAGC8/2L/AwAAAAAAAGC9/2L/AwAAAAAAAGC+/2L/AwAAAAAAAGC//2L/AwAAAAAAAGDA/2L/AwAAAAAAAGDB/2L/AwAAAAAAAGDC/2L/AwAAAAAAAGDD/2L/AwAAAAAAAGDE/2L/AwAAAAAAAGDF/2L/AwAAAAAAAGDG/2L/AwAAAAAAAGDH/2L/AwAAAAAAAGDI/2L/AwAAAAAAAGDJ/2L/AwAAAAAAAGDK/2L/AwAAAAAAAGDL/2L/AwAAAAAAAGDM/2L/AwAAAAAAAGDN/2L/AwAAAAAAAGDO/2L/AwAAAAAAAGDP/2L/AwAAAAAAAGDQ/2L/AwAAAAAAAGDR/2L/AwAAAAAAAGDS/2L/AwAAAAAAAGDT/2L/AwAAAAAAAGDU/2L/AwAAAAAAAGDV/2L/AwAAAAAAAGDW/2L/AwAAAAAAAGDX/2L/AwAAAAAAAGDY/2L/AwAAAAAAAGDZ/2L/AwAAAAAAAGDa/2L/AwAAAAAAAGDb/2L/AwAAAAAAAGDc/2L/AwAAAAAAAGDd/2L/AwAAAAAAAGDe/2L/AwAAAAAAAGDf/2L/AwAAAAAAAGDg/2L/AwAAAAAAAGDh/2L/AwAAAAAAAGDi/2L/AwAAAAAAAGDj/2L/AwAAAAAAAGDk/2L/AwAAAAAAAGDl/2L/AwAAAAAAAGDm/2L/AwAAAAAAAGDn/2L/AwAAAAAAAGDo/2L/AwAAAAAAAGDp/2L/AwAAAAAAAGDq/2L/AwAAAAAAAGDr/2L/AwAAAAAAAGDs/2L/AwAAAAAAAGDt/2L/AwAAAAAAAGDu/2L/AwAAAAAAAGDx/5v/AwAAAAAAAGDy/5v/AwAAAAAAAGDz/5v/AwAAAAAAAGD0/5v/AwAAAAAAAGD1/5v/AwAAAAAAAGD2/5v/AwAAAAAAAGD3/5v/AwAAAAAAAGD4/5v/AwAAAAAAAGD5/5v/AwAAAAAAAGD6/5v/AwAAAAAAAGD7/5v/AwAAAAAAAGD+/5n/AwAAAAAAAAD+/5j/AwAAAAAAAAD+/5f/AwAAAAAAAAD+/5b/AwAAAAAAAAD+/5X/AwAAAAAAAAD+/5T/AwAAAAAAAAD+/5P/AwAAAAAAAAD+/5L/AwAAAAAAAAD+/5H/AwAAAAAAAAD+/5D/AwAAAAAAAAD+/4//AwAAAAAAAAD+/47/AwAAAAAAAAD+/43/AwAAAAAAAAD+/4z/AwAAAAAAAAD+/4v/AwAAAAAAAAD+/4r/AwAAAAAAAAA=")
 tile_set = ExtResource("2_oaxwt")
 
-[node name="e" parent="encounters/ea3" instance=ExtResource("8_yccel")]
-position = Vector2(-672, -4320)
-enemy_index = 4
-
 [node name="e2" parent="encounters/ea3" instance=ExtResource("8_yccel")]
 position = Vector2(-1344, -4336)
-enemy_index = 4
-
-[node name="e3" parent="encounters/ea3" instance=ExtResource("8_yccel")]
-position = Vector2(-2032, -4336)
 enemy_index = 4
 
 [node name="e4" parent="encounters/ea3" instance=ExtResource("8_yccel")]
@@ -256,23 +244,11 @@ tile_set = ExtResource("2_oaxwt")
 position = Vector2(-2320, -1328)
 enemy_index = 3
 
-[node name="enemy_spawner2" parent="encounters/ea5" instance=ExtResource("8_yccel")]
-position = Vector2(-1808, -1296)
-enemy_index = 2
-
 [node name="enemy_spawner3" parent="encounters/ea5" instance=ExtResource("8_yccel")]
 position = Vector2(-1120, -1280)
 
-[node name="enemy_spawner4" parent="encounters/ea5" instance=ExtResource("8_yccel")]
-position = Vector2(-1456, -1440)
-enemy_index = 1
-
 [node name="enemy_spawner5" parent="encounters/ea5" instance=ExtResource("8_yccel")]
 position = Vector2(-504, -1336)
-enemy_index = 1
-
-[node name="enemy_spawner6" parent="encounters/ea5" instance=ExtResource("8_yccel")]
-position = Vector2(100, -1528)
 enemy_index = 1
 
 [node name="enemy_spawner7" parent="encounters/ea5" instance=ExtResource("8_yccel")]

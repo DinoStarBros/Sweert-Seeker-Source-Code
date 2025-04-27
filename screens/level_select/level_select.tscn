@@ -36,7 +36,7 @@ offset_bottom = 320.0
 scale = Vector2(2, 2)
 theme_override_font_sizes/font_size = 30
 text = "Level 1
-Castle"
+Tower"
 
 [node name="lv2" type="Button" parent="."]
 offset_left = 768.0
@@ -46,7 +46,7 @@ offset_bottom = 320.0
 scale = Vector2(2, 2)
 theme_override_font_sizes/font_size = 30
 text = "Level 2
-Park"
+Mt. Fog"
 
 [node name="back" type="Button" parent="."]
 offset_left = 16.0

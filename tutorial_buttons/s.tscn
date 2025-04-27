@@ -2,6 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://bt6ig37ogacc5" path="res://Art/treasureHunter/keys tutor-Sheet.png" id="1_p3cco"]
 
+[sub_resource type="Animation" id="Animation_3h77c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeysTutor-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
 [sub_resource type="Animation" id="Animation_p3cco"]
 resource_name = "loop"
 length = 0.6
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "values": [4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_3h77c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("KeysTutor-sheet:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u48dx"]
 _data = {
 &"RESET": SubResource("Animation_3h77c"),
@@ -44,6 +44,7 @@ _data = {
 [node name="s" type="Node2D"]
 
 [node name="KeysTutor-sheet" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_p3cco")
 hframes = 8
 frame = 5

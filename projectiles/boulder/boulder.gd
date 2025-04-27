@@ -42,7 +42,8 @@ func reflect(_attack_pos : Vector2) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Enemy and reflected:
-		body.hurt(global_position)
+		if body.sm.current_state.name != "hooked":
+			body.hurt(global_position)
 
 var enable_gravity : bool = true
 func _on_timer_timeout() -> void:
