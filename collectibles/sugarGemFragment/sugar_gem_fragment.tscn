@@ -195,7 +195,7 @@ color = Color(0.0570641, 0.723583, 0.0479947, 1)
 energy = 3.0
 shadow_enabled = true
 texture = ExtResource("5_lkqbd")
-texture_scale = 15.0
+texture_scale = 5.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emission_shape = 1

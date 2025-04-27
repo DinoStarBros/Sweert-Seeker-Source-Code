@@ -1,27 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyox54lys0by8"]
+[gd_scene load_steps=10 format=3 uid="uid://cyox54lys0by8"]
 
 [ext_resource type="Script" uid="uid://ihrntpa0b2kb" path="res://screens/title_screen/title_screen.gd" id="1_4rvf0"]
 [ext_resource type="PackedScene" uid="uid://do3oy3lqr320g" path="res://screens/settingsMenu/settings_menu.tscn" id="2_alfmu"]
 [ext_resource type="PackedScene" uid="uid://cyceo8l045gip" path="res://screens/about/about.tscn" id="3_v18if"]
 [ext_resource type="PackedScene" uid="uid://bo6nqc1pt14j0" path="res://screens/credits/credits.tscn" id="4_fjwv1"]
+[ext_resource type="Texture2D" uid="uid://bs2o5esw06uoa" path="res://Art/treasureHunter/sweeker wall.png" id="5_jtisy"]
+[ext_resource type="Texture2D" uid="uid://efbln7woh4af" path="res://Art/treasureHunter/sweeker.png" id="6_8eykq"]
+[ext_resource type="Texture2D" uid="uid://dnh3mf2iopdqf" path="res://Art/treasureHunter/sweeker drone.png" id="7_bgok2"]
+[ext_resource type="Texture2D" uid="uid://c3dsd8hli26m6" path="res://Art/treasureHunter/sweeker mouse.png" id="8_v01p7"]
+[ext_resource type="AudioStream" uid="uid://wwky8hohtk1h" path="res://Audio/tresuremusic/lvl3.mp3" id="9_bgok2"]
 
 [node name="title_screen" type="Node2D"]
 script = ExtResource("1_4rvf0")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 260.0
-offset_top = 110.0
-offset_right = 447.0
-offset_bottom = 133.0
-scale = Vector2(4, 4)
-text = "Project Treasure Hunter"
-horizontal_alignment = 1
-
 [node name="buttons" type="VBoxContainer" parent="."]
-offset_left = 474.0
-offset_top = 243.0
-offset_right = 640.0
-offset_bottom = 414.0
+unique_name_in_owner = true
+offset_left = 880.0
+offset_top = 320.0
+offset_right = 1046.0
+offset_bottom = 491.0
 scale = Vector2(2, 2)
 
 [node name="play" type="Button" parent="buttons"]
@@ -67,6 +64,32 @@ position = Vector2(90, 50)
 unique_name_in_owner = true
 visible = false
 position = Vector2(90, 50)
+
+[node name="bgstuff" type="Node2D" parent="."]
+z_index = -100
+position = Vector2(640, 352)
+scale = Vector2(0.5, 0.5)
+
+[node name="SweekerWall" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("5_jtisy")
+
+[node name="Sweeker" type="Sprite2D" parent="bgstuff"]
+unique_name_in_owner = true
+texture = ExtResource("6_8eykq")
+
+[node name="SweekerDrone" type="Sprite2D" parent="bgstuff"]
+unique_name_in_owner = true
+position = Vector2(-272, -48)
+texture = ExtResource("7_bgok2")
+
+[node name="SweekerMouse" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("8_v01p7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bgok2")
+volume_db = -10.0
+autoplay = true
+bus = &"music"
 
 [connection signal="pressed" from="buttons/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="buttons/about" to="." method="_on_about_pressed"]

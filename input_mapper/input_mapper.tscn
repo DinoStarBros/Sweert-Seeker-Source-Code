@@ -21,6 +21,7 @@ offset_left = 22.0
 offset_top = 51.0
 offset_right = 356.0
 offset_bottom = 114.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Up"
 
@@ -30,6 +31,7 @@ offset_left = 22.0
 offset_top = 123.0
 offset_right = 356.0
 offset_bottom = 186.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Left"
 
@@ -39,6 +41,7 @@ offset_left = 24.0
 offset_top = 195.0
 offset_right = 358.0
 offset_bottom = 258.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Down"
 
@@ -48,6 +51,7 @@ offset_left = 22.0
 offset_top = 267.0
 offset_right = 356.0
 offset_bottom = 330.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Right"
 
@@ -57,6 +61,7 @@ offset_left = 22.0
 offset_top = 339.0
 offset_right = 356.0
 offset_bottom = 402.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Jump"
 
@@ -66,6 +71,7 @@ offset_left = 24.0
 offset_top = 411.0
 offset_right = 358.0
 offset_bottom = 474.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Slash"
 
@@ -75,6 +81,7 @@ offset_left = 24.0
 offset_top = 483.0
 offset_right = 358.0
 offset_bottom = 546.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Grapple"
 
@@ -84,6 +91,7 @@ offset_left = 24.0
 offset_top = 555.0
 offset_right = 358.0
 offset_bottom = 618.0
+theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Grapple Dash"
 

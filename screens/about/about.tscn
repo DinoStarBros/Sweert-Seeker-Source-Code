@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyceo8l045gip"]
+[gd_scene load_steps=4 format=3 uid="uid://cyceo8l045gip"]
 
 [ext_resource type="Script" uid="uid://dav6yo5j351jk" path="res://screens/about/about.gd" id="1_du5j5"]
+[ext_resource type="LabelSettings" uid="uid://chf0qf85n0sm4" path="res://menu_font.tres" id="2_33xr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33xr6"]
+bg_color = Color(0.249349, 0.169166, 0.330088, 1)
 
 [node name="about" type="Node2D"]
 script = ExtResource("1_du5j5")
@@ -8,6 +12,7 @@ script = ExtResource("1_du5j5")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_right = 1100.0
 offset_bottom = 624.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_33xr6")
 
 [node name="back" type="Button" parent="."]
 offset_left = 448.0
@@ -19,19 +24,31 @@ focus_mode = 0
 text = "Back"
 
 [node name="about" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 116.0
-offset_bottom = 87.0
+offset_right = 96.0
+offset_bottom = 42.0
 text = "About:"
+label_settings = ExtResource("2_33xr6")
 
 [node name="stuff" type="Label" parent="."]
-offset_left = 96.0
-offset_top = 96.0
-offset_right = 642.0
-offset_bottom = 171.0
-text = "Made for the GGJam #2 Game Jam, Hosted by Gigantic G Studio
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 1006.0
+offset_bottom = 532.0
+text = "Made for the GGJam #2 Game Jam, Hosted by Gigantic G Studio. 
+Theme/s: Seek What's Hidden,  Sugar Explosion
+Diversification/s: Unknown Monuments
+A platformer about exploration, fast-paced combat, and movement. Use your grappling hook to traverse 
+through levels. Along with your knife to deal with obstacles. Find the hidden candy gems scattered 
+throughout the level. This game takes inspiration from Katana Zero, Sanabi, and Pizza Tower
 
-This game takes inspiration from Katana Zero, Sanabi, and Pizza Tower"
+Rough Portuguese DeepL Translation:
+Feito para a GGJam #2 Game Jam, organizada pelo Gigantic G Studio. 
+Tema/s: Procura o que está escondido, Explosão de açúcar
+Diversificação/s: Monumentos Desconhecidos
+
+Um jogo de plataformas sobre exploração, combate rápido e movimento. Usa o teu gancho para atravessar
+os níveis. para atravessar os níveis. Usa a tua faca para enfrentar os obstáculos. Encontra as gemas escondidas 
+espalhadas pelo nível.pelo nível. Este jogo inspira-se em Katana Zero, Sanabi e Pizza Tower"
+label_settings = ExtResource("2_33xr6")
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

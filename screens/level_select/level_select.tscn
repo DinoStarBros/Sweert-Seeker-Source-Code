@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://qt7lrw2sf77s"]
+[gd_scene load_steps=7 format=3 uid="uid://qt7lrw2sf77s"]
 
 [ext_resource type="Script" uid="uid://cdkwu0j1lngvb" path="res://screens/level_select/level_select.gd" id="1_kd0iq"]
+[ext_resource type="AudioStream" uid="uid://c35xbkf786o38" path="res://Audio/tresuremusic/tutorial.mp3" id="2_pgvlc"]
+[ext_resource type="Texture2D" uid="uid://bs2o5esw06uoa" path="res://Art/treasureHunter/sweeker wall.png" id="3_iaxtm"]
+[ext_resource type="Texture2D" uid="uid://efbln7woh4af" path="res://Art/treasureHunter/sweeker.png" id="4_uucwm"]
+[ext_resource type="Texture2D" uid="uid://dnh3mf2iopdqf" path="res://Art/treasureHunter/sweeker drone.png" id="5_qbyk6"]
+[ext_resource type="Texture2D" uid="uid://c3dsd8hli26m6" path="res://Art/treasureHunter/sweeker mouse.png" id="6_qnobr"]
 
 [node name="level_select" type="Node2D"]
 script = ExtResource("1_kd0iq")
@@ -51,6 +56,32 @@ offset_bottom = 672.0
 scale = Vector2(2, 2)
 focus_mode = 0
 text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pgvlc")
+volume_db = -10.0
+autoplay = true
+bus = &"music"
+
+[node name="bgstuff" type="Node2D" parent="."]
+modulate = Color(0.548963, 0.548963, 0.548963, 1)
+z_index = -100
+position = Vector2(640, 352)
+scale = Vector2(0.5, 0.5)
+
+[node name="SweekerWall" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("3_iaxtm")
+
+[node name="Sweeker" type="Sprite2D" parent="bgstuff"]
+visible = false
+texture = ExtResource("4_uucwm")
+
+[node name="SweekerDrone" type="Sprite2D" parent="bgstuff"]
+position = Vector2(-272, -48)
+texture = ExtResource("5_qbyk6")
+
+[node name="SweekerMouse" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("6_qnobr")
 
 [connection signal="pressed" from="tut" to="." method="_on_tut_pressed"]
 [connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]

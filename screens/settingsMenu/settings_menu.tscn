@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://do3oy3lqr320g"]
+[gd_scene load_steps=4 format=3 uid="uid://do3oy3lqr320g"]
 
 [ext_resource type="Script" uid="uid://cuqedscshbnth" path="res://screens/settingsMenu/settings_menu.gd" id="1_ewieb"]
 [ext_resource type="PackedScene" uid="uid://d4c1v5hlv56nk" path="res://input_mapper/input_mapper.tscn" id="2_gcp1t"]
+[ext_resource type="LabelSettings" uid="uid://chf0qf85n0sm4" path="res://menu_font.tres" id="2_p0hsd"]
 
 [node name="settingsMenu" type="Control"]
 process_mode = 3
@@ -26,6 +27,7 @@ alignment = 1
 [node name="txt" type="Label" parent="volumes"]
 layout_mode = 2
 text = "Master"
+label_settings = ExtResource("2_p0hsd")
 
 [node name="master_volume" type="HSlider" parent="volumes"]
 unique_name_in_owner = true
@@ -36,6 +38,7 @@ step = 0.001
 [node name="txt2" type="Label" parent="volumes"]
 layout_mode = 2
 text = "Music"
+label_settings = ExtResource("2_p0hsd")
 
 [node name="music_volume" type="HSlider" parent="volumes"]
 unique_name_in_owner = true
@@ -46,6 +49,7 @@ step = 0.001
 [node name="txt3" type="Label" parent="volumes"]
 layout_mode = 2
 text = "SFX"
+label_settings = ExtResource("2_p0hsd")
 
 [node name="sfx_vol" type="HSlider" parent="volumes"]
 unique_name_in_owner = true
@@ -55,24 +59,27 @@ step = 0.001
 
 [node name="txt4" type="Label" parent="volumes"]
 layout_mode = 2
-text = "
-Accessibility:
+text = "Accessibility:
 Screen Shake:"
+label_settings = ExtResource("2_p0hsd")
 
 [node name="screen_shake" type="Button" parent="volumes"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 20
 text = "On"
 
 [node name="txt5" type="Label" parent="volumes"]
 layout_mode = 2
 text = "Frame Freeze:"
+label_settings = ExtResource("2_p0hsd")
 
 [node name="frame_freeze" type="Button" parent="volumes"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 20
 text = "On"
 
 [node name="buttons" type="HBoxContainer" parent="."]

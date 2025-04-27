@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bao02frwprgef"]
+
+[ext_resource type="Texture2D" uid="uid://bwfjrnk3w015n" path="res://Art/treasureHunter/levelDetails-Sheet.png" id="1_bnikq"]
+[ext_resource type="Script" uid="uid://dxbi8ms6tx2gr" path="res://levelDetails/shelf/shelf.gd" id="1_lqfmq"]
+
+[node name="shelf" type="Node2D"]
+script = ExtResource("1_lqfmq")
+
+[node name="LevelDetails-sheet" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -48)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_bnikq")
+hframes = 5

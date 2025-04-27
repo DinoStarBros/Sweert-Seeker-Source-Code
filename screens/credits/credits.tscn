@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo6nqc1pt14j0"]
+[gd_scene load_steps=3 format=3 uid="uid://bo6nqc1pt14j0"]
 
 [ext_resource type="Script" uid="uid://bcgutr4hb0ced" path="res://screens/credits/credits.gd" id="1_53a3d"]
+[ext_resource type="LabelSettings" uid="uid://chf0qf85n0sm4" path="res://menu_font.tres" id="2_1h4sr"]
 
 [node name="credits" type="Node2D"]
 script = ExtResource("1_53a3d")
@@ -24,24 +25,23 @@ offset_top = 40.0
 offset_right = 116.0
 offset_bottom = 63.0
 text = "Credits:"
+label_settings = ExtResource("2_1h4sr")
 
 [node name="stuff" type="Label" parent="."]
 offset_left = 96.0
-offset_top = 72.0
-offset_right = 225.0
-offset_bottom = 381.0
+offset_top = 80.0
+offset_right = 406.0
+offset_bottom = 527.0
 text = "Software:
-
 Godot Engine
-
 Aseprite
 Krita
-
 Fl Studio Mobile
 LabChirp
 
-Asset Packs:
-
-Kenney Font & SFX"
+External Assets Used:
+Kenney Font & SFX
+pixabay.com"
+label_settings = ExtResource("2_1h4sr")
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
