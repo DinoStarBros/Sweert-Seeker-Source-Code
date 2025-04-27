@@ -129,12 +129,13 @@ func swing(_delta:float)-> void:
 				player.sm.change_state("enemyHooked")
 				%hurcol.disabled = false
 				
-			elif player.sm.current_state.name == "hook":
+			elif player.sm.current_state.name == "hook" and raycast_collider:
 				# Dash toward the enemy when the hook hits, 
 				# When the player hasn't collided with the enemy yet
 				
 				#player.global_position = player.grapple_controller.raycast_collider.global_position + Vector2(-30 * x_dir, -30)
 				%hurcol.disabled = true
+				#player.velocity = player.global_position.direction_to(raycast_collider.global_position) * 3000
 				player.velocity = player.global_position.direction_to(target) * 3000
 		
 		elif swing_mode == "zipline":

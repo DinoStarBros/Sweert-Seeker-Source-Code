@@ -21,12 +21,11 @@ func move(delta:float) -> void:
 	global_position += velocity * delta
 
 func _on_area_entered(area: Area2D) -> void:
-	
 	if not reflected:
 		if area.get_parent() is Player and area.name == "hurtbox":
 			if area.get_parent().has_method("hurt"):
 				area.get_parent().hurt(global_position)
-
+				queue_free()
 
 func reflect(attack_pos : Vector2) -> void:
 	reflected = true
@@ -43,9 +42,11 @@ func reflect(attack_pos : Vector2) -> void:
 	%reflect.pitch_scale = randf_range(0.9, 1.1)
 	%reflect.play()
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body: Enemy) -> void:
 	if body is Enemy and reflected:
-		body.hurt(global_position)
+		if body.sm.current_state.name != "hooked":
+			body.hurt(global_position)
+			queue_free()
 
 func _on_timer_timeout() -> void:
 	queue_free()

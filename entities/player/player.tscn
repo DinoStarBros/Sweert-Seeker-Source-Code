@@ -1,8 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://chfhw74nigg0t"]
+[gd_scene load_steps=74 format=3 uid="uid://chfhw74nigg0t"]
 
 [ext_resource type="Script" uid="uid://dc7q4go3xow7l" path="res://entities/player/player.gd" id="1_symyc"]
 [ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_abrql"]
 [ext_resource type="Texture2D" uid="uid://d2pt2wu7bo32y" path="res://Art/treasureHunter/mouse-sprites-Sheet.png" id="2_geky7"]
+[ext_resource type="Texture2D" uid="uid://drcm8ae40vnee" path="res://Art/treasureHunter/healthcircle-Sheet.png" id="2_qwspa"]
 [ext_resource type="PackedScene" uid="uid://byp4l1f8qw63g" path="res://camera/camera.tscn" id="3_sglur"]
 [ext_resource type="Script" uid="uid://rkcs2jtotkmj" path="res://StateMachines/player_states/player_stateMachine.gd" id="4_bls4j"]
 [ext_resource type="Script" uid="uid://betkg2ge27k2g" path="res://StateMachines/player_states/walkPlr.gd" id="6_wvtmh"]
@@ -1441,6 +1442,14 @@ size = Vector2(46, 60)
 script = ExtResource("1_symyc")
 metadata/_edit_vertical_guides_ = [-240.0]
 
+[node name="Healthcircle-sheet" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+texture = ExtResource("2_qwspa")
+hframes = 6
+frame = 4
+
 [node name="mousesprites" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-3, -8)
@@ -1474,7 +1483,6 @@ collision_mask = 4096
 shape = SubResource("CircleShape2D_qpopc")
 
 [node name="Camera" parent="." instance=ExtResource("3_sglur")]
-zoom = Vector2(0.6, 0.6)
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
@@ -1552,7 +1560,6 @@ bus = &"sfx"
 [node name="hurt" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("19_ghoj8")
 volume_db = -5.0
-pitch_scale = 2.0
 bus = &"sfx"
 
 [node name="hurt2" type="AudioStreamPlayer" parent="sfx"]
@@ -1624,6 +1631,7 @@ script = ExtResource("25_8q4fm")
 
 [node name="state_txt" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 5
 offset_left = -17.0
 offset_top = -46.0

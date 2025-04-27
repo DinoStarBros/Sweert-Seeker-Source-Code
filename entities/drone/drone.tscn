@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://fv1o8nqsbltd"]
+[gd_scene load_steps=19 format=3 uid="uid://fv1o8nqsbltd"]
 
 [ext_resource type="Script" uid="uid://ctcx5xwybhdjv" path="res://entities/drone/drone.gd" id="1_3yxas"]
 [ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_qn5ix"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://begwilrdjgsm0" path="res://StateMachines/drone_states/flyingDrone.gd" id="7_gtlfc"]
 [ext_resource type="Script" uid="uid://beemqkdk7mkdr" path="res://StateMachines/drone_states/deadDrone.gd" id="8_55k60"]
 [ext_resource type="Script" uid="uid://niirc5ujo2pg" path="res://StateMachines/drone_states/hookedDrone.gd" id="9_81par"]
+[ext_resource type="Texture2D" uid="uid://savtwnl6uysp" path="res://Art/treasureHunter/flying enemy-Sheet.png" id="11_55k60"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdbqk"]
 radius = 26.1725
@@ -87,6 +88,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FlyingEnemy-sheet:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FlyingEnemy-sheet:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ebbcm"]
@@ -191,12 +216,26 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FlyingEnemy-sheet:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(100, 100, 100, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_gtlfc"]
 resource_name = "hooked"
+length = 0.2
 
 [sub_resource type="Animation" id="Animation_kdbqk"]
 resource_name = "loop"
+length = 0.3
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -206,10 +245,10 @@ tracks/0/path = NodePath("Icon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 6.28319]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,10 +257,22 @@ tracks/1/path = NodePath("sfx/fly:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.283781),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlyingEnemy-sheet:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7eah5"]
@@ -245,6 +296,7 @@ script = ExtResource("1_3yxas")
 shape = SubResource("CircleShape2D_kdbqk")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_qn5ix")
 
@@ -276,6 +328,7 @@ max_distance = 500.0
 bus = &"sfx"
 
 [node name="state_txt" type="Label" parent="."]
+visible = false
 offset_left = -22.0
 offset_top = -44.0
 offset_right = 18.0
@@ -323,3 +376,8 @@ script = ExtResource("9_81par")
 
 [node name="dead" type="Node" parent="droneStateMachine"]
 script = ExtResource("8_55k60")
+
+[node name="FlyingEnemy-sheet" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("11_55k60")
+hframes = 6

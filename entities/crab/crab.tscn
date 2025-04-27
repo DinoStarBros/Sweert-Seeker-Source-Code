@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwhc7fxd0gyc5"]
+[gd_scene load_steps=20 format=3 uid="uid://cwhc7fxd0gyc5"]
 
 [ext_resource type="Script" uid="uid://crnw6ra3ax06v" path="res://entities/crab/crab.gd" id="1_mokfo"]
 [ext_resource type="Script" uid="uid://1maab4nagnab" path="res://StateMachines/crab_states/crabStateMachine.gd" id="2_vquqe"]
@@ -10,9 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://cw0s6bkxlwn2b" path="res://Audio/splashtownSFX/Jump.wav" id="8_solnr"]
 [ext_resource type="Texture2D" uid="uid://c0jpnw00110i" path="res://Art/hitspark.png" id="9_0gsr0"]
 [ext_resource type="AudioStream" uid="uid://cppxtyh63shtf" path="res://Audio/tresure/walkStep.wav" id="9_rgpjo"]
+[ext_resource type="Texture2D" uid="uid://dircpegfs31d4" path="res://Art/treasureHunter/crab enemy-Sheet.png" id="11_3wxck"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ogyp"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wxck"]
+size = Vector2(62, 38)
 
 [sub_resource type="Curve" id="Curve_yqh0o"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994737, 0), 0.0, 0.0, 0, 0]
@@ -91,6 +92,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CrabEnemy-sheet:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CrabEnemy-sheet:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3337n"]
@@ -207,6 +232,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CrabEnemy-sheet:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mokfo"]
 resource_name = "hooked"
@@ -226,7 +263,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qampi"]
 resource_name = "loop"
-length = 0.8
+length = 0.4
 loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
@@ -248,10 +285,22 @@ tracks/1/path = NodePath("sfx/walk:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.4, 0.45),
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CrabEnemy-sheet:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cutij"]
@@ -271,7 +320,7 @@ collision_mask = 70
 script = ExtResource("1_mokfo")
 
 [node name="orbcol" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4ogyp")
+shape = SubResource("RectangleShape2D_3wxck")
 
 [node name="crabStateMachine" type="Node" parent="." node_paths=PackedStringArray("state_text")]
 unique_name_in_owner = true
@@ -289,6 +338,7 @@ script = ExtResource("4_mokfo")
 script = ExtResource("5_rgpjo")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -47.0
 offset_right = 22.0
@@ -296,6 +346,7 @@ offset_bottom = -24.0
 text = "bruzz"
 
 [node name="NpCs-child" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("6_ts7kb")
 hframes = 4
@@ -376,5 +427,11 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fd_pivot/hitbox"]
 position = Vector2(32, -1)
 shape = SubResource("CircleShape2D_mokfo")
+
+[node name="CrabEnemy-sheet" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_3wxck")
+hframes = 8
 
 [connection signal="area_entered" from="fd_pivot/hitbox" to="." method="_on_hitbox_area_entered"]

@@ -34,7 +34,8 @@ func process(delta: float)-> void:
 				p.grapple_controller.retract()
 				%slash_pivot.look_at(p.get_global_mouse_position())
 		else:
-			p.global_position = p.grapple_controller.raycast_collider.global_position + Vector2(-30, -30)
+			if p.grapple_controller.raycast_collider:
+				p.global_position = p.grapple_controller.raycast_collider.global_position + Vector2(-30, -30)
 
 func on_exit()-> void:
 	%HeartJavelin.hide()

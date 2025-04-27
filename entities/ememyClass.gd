@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
+
 func hurt(_attack_position : Vector2) -> void:
 	pass
 

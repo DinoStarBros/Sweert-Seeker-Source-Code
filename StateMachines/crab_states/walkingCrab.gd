@@ -13,6 +13,7 @@ func process(_delta: float)-> void:
 		dir *= -1
 		%fd_pivot.scale.x = -%fd_pivot.scale.x
 	
+	%"CrabEnemy-sheet".flip_h = dir == 1
 
 func on_exit()-> void:
 	pass

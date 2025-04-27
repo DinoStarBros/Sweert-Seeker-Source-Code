@@ -65,6 +65,8 @@ func _physics_process(delta: float) -> void:
 	
 	if g.player_hp <= 0:
 		sm.change_state("dead")
+	
+	%"Healthcircle-sheet".frame = g.player_hp
 
 const max_speed : float = 700
 const acceleration : float = 20
