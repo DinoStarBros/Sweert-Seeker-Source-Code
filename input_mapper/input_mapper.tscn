@@ -66,6 +66,7 @@ script = ExtResource("1_7lnyo")
 action = "Jump"
 
 [node name="Slash" type="Button" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 24.0
 offset_top = 411.0
@@ -76,6 +77,7 @@ script = ExtResource("1_7lnyo")
 action = "Slash"
 
 [node name="Grapple" type="Button" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 24.0
 offset_top = 483.0
@@ -85,15 +87,15 @@ theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
 action = "Grapple"
 
-[node name="GrappleDash" type="Button" parent="."]
+[node name="GrappleBoost" type="Button" parent="."]
 layout_mode = 2
 offset_left = 24.0
-offset_top = 555.0
+offset_top = 411.0
 offset_right = 358.0
-offset_bottom = 618.0
+offset_bottom = 474.0
 theme_override_font_sizes/font_size = 20
 script = ExtResource("1_7lnyo")
-action = "Grapple Dash"
+action = "Grapple Boost"
 
 [node name="keybind" type="Label" parent="."]
 layout_mode = 0

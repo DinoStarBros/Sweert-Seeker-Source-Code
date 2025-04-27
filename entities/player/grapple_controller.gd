@@ -50,6 +50,7 @@ var x_dir : int
 var raycast_collider : Node2D
 func launch()-> void:
 	if ray.is_colliding():
+		show()
 		grapple_dashed = false
 		launched = true
 		target = ray.get_collision_point()
@@ -128,6 +129,7 @@ func swing(_delta:float)-> void:
 				player.velocity = Vector2.ZERO
 				player.sm.change_state("enemyHooked")
 				%hurcol.disabled = false
+				hide()
 				
 			elif player.sm.current_state.name == "hook" and raycast_collider:
 				# Dash toward the enemy when the hook hits, 
@@ -136,6 +138,7 @@ func swing(_delta:float)-> void:
 				#player.global_position = player.grapple_controller.raycast_collider.global_position + Vector2(-30 * x_dir, -30)
 				%hurcol.disabled = true
 				player.velocity = player.global_position.direction_to(raycast_collider.global_position) * 3000
+				show()
 				#player.velocity = player.global_position.direction_to(target) * 3000
 		
 		elif swing_mode == "zipline":
@@ -147,7 +150,7 @@ func swing(_delta:float)-> void:
 	elif Input.is_action_pressed("Right"):
 		x_dir = 1
 	
-	if Input.is_action_just_pressed("Grapple Dash") and not player.is_on_floor():
+	if Input.is_action_just_pressed("Grapple Boost") and not player.is_on_floor():
 		if not grapple_dashed:
 			player.anim.play("grappleBoost")
 			%ouchnim.play("short_iframes")

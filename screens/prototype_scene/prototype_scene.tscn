@@ -150,8 +150,7 @@ position = Vector2(-400, 444)
 
 [node name="encounter_areas" type="Node2D" parent="."]
 
-[node name="ea1" parent="encounter_areas" node_paths=PackedStringArray("debug_text") instance=ExtResource("8_la5up")]
-debug_text = NodePath("Label")
+[node name="ea1" parent="encounter_areas" instance=ExtResource("8_la5up")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="encounter_areas/ea1"]
 position = Vector2(968, -1721)
@@ -181,15 +180,7 @@ enemy_index = 1
 position = Vector2(1696, -1888)
 enemy_index = 1
 
-[node name="Label" type="Label" parent="encounter_areas/ea1"]
-offset_left = 1776.0
-offset_top = -1888.0
-offset_right = 1816.0
-offset_bottom = -1865.0
-horizontal_alignment = 1
-
-[node name="ea2" parent="encounter_areas" node_paths=PackedStringArray("debug_text") instance=ExtResource("8_la5up")]
-debug_text = NodePath("Label")
+[node name="ea2" parent="encounter_areas" instance=ExtResource("8_la5up")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="encounter_areas/ea2"]
 position = Vector2(4480, -496)
@@ -198,13 +189,6 @@ shape = SubResource("RectangleShape2D_jonxr")
 [node name="barriers2" type="TileMapLayer" parent="encounter_areas/ea2"]
 tile_map_data = PackedByteArray("AACEAMv/AwAAAAAAAGCDAMv/AwAAAAAAAGCCAMv/AwAAAAAAAGCBAMv/AwAAAAAAAGCAAMv/AwAAAAAAAGB/AMv/AwAAAAAAAGB+AMv/AwAAAAAAAGB9AMv/AwAAAAAAAGB7ABIAAwAAAAAAADB7ABEAAwAAAAAAADB7ABAAAwAAAAAAADB7AA8AAwAAAAAAADB7AA4AAwAAAAAAADB7AA0AAwAAAAAAADB7AAwAAwAAAAAAADA=")
 tile_set = ExtResource("3_welu2")
-
-[node name="Label" type="Label" parent="encounter_areas/ea2"]
-offset_left = 4752.0
-offset_top = -1578.0
-offset_right = 4792.0
-offset_bottom = -1555.0
-horizontal_alignment = 1
 
 [node name="enemy_spawner" parent="encounter_areas/ea2" instance=ExtResource("8_1pio8")]
 position = Vector2(4720, -1360)
@@ -545,5 +529,7 @@ position = Vector2(4545, -889)
 
 [node name="torch30" parent="torches" instance=ExtResource("19_h7k3o")]
 position = Vector2(4596, 182)
+
+[node name="tutorial buttons" type="Node2D" parent="."]
 
 [connection signal="timeout" from="escapeshaketimer" to="." method="_on_escapeshaketimer_timeout"]

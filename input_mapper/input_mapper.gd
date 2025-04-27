@@ -1,6 +1,6 @@
 extends Control
 
-const keymaps_path : String = "user://keymaps.json"
+const keymaps_path : String = "user://keymaps.dat"
 var keymaps : Dictionary
 
 func _ready()->void:

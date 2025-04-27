@@ -1,27 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq551ogqosnjm"]
+[gd_scene load_steps=13 format=3 uid="uid://bq551ogqosnjm"]
 
 [ext_resource type="Script" uid="uid://cbb3idx3i56dk" path="res://screens/victory/victory.gd" id="1_xiub4"]
-[ext_resource type="Texture2D" uid="uid://b0kkdj6apko5m" path="res://icon.svg" id="2_jpao3"]
 [ext_resource type="Texture2D" uid="uid://elkxoju041sl" path="res://Art/Stuff2/poker_hip-Sheet.png" id="3_6xyub"]
+[ext_resource type="Texture2D" uid="uid://ciqqnr35ia7lu" path="res://Art/treasureHunter/gemma.png" id="4_520se"]
+[ext_resource type="Texture2D" uid="uid://c3dsd8hli26m6" path="res://Art/treasureHunter/sweeker mouse.png" id="4_frpm7"]
+[ext_resource type="Texture2D" uid="uid://bs2o5esw06uoa" path="res://Art/treasureHunter/sweeker wall.png" id="4_jr75m"]
+[ext_resource type="Texture2D" uid="uid://efbln7woh4af" path="res://Art/treasureHunter/sweeker.png" id="5_qshk6"]
+[ext_resource type="Texture2D" uid="uid://dnh3mf2iopdqf" path="res://Art/treasureHunter/sweeker drone.png" id="6_13uwi"]
+[ext_resource type="Texture2D" uid="uid://dd6rjts7wity8" path="res://Art/treasureHunter/sweeker candy.png" id="7_o4u5l"]
+[ext_resource type="Texture2D" uid="uid://d2pt2wu7bo32y" path="res://Art/treasureHunter/mouse-sprites-Sheet.png" id="9_qshk6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_520se"]
-atlas = ExtResource("3_6xyub")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="Animation" id="Animation_qshk6"]
+resource_name = "loop"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-sprites-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_13uwi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse-sprites-sheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4u5l"]
+_data = {
+&"RESET": SubResource("Animation_13uwi"),
+&"loop": SubResource("Animation_qshk6")
+}
 
 [node name="victory" type="Node2D"]
 script = ExtResource("1_xiub4")
 
-[node name="Icon" type="Sprite2D" parent="."]
-z_index = 3
-position = Vector2(560, 222)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_jpao3")
-
 [node name="text" type="Label" parent="."]
-offset_left = 563.0
-offset_top = 336.0
-offset_right = 717.0
-offset_bottom = 385.0
+offset_left = 480.0
+offset_top = 416.0
+offset_right = 634.0
+offset_bottom = 465.0
 scale = Vector2(2, 2)
 text = "You Escaped! 
 Press Space To Exit"
@@ -31,7 +66,7 @@ justification_flags = 162
 
 [node name="fragments" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(736, 222)
+position = Vector2(640, 288)
 scale = Vector2(2, 2)
 
 [node name="outlines" type="Node2D" parent="fragments"]
@@ -81,7 +116,7 @@ hframes = 6
 unique_name_in_owner = true
 visible = false
 position = Vector2(-16, -16)
-texture = SubResource("AtlasTexture_520se")
+texture = ExtResource("4_520se")
 hframes = 2
 vframes = 2
 
@@ -89,7 +124,7 @@ vframes = 2
 unique_name_in_owner = true
 visible = false
 position = Vector2(16, -16)
-texture = SubResource("AtlasTexture_520se")
+texture = ExtResource("4_520se")
 hframes = 2
 vframes = 2
 frame = 1
@@ -98,7 +133,7 @@ frame = 1
 unique_name_in_owner = true
 visible = false
 position = Vector2(-16, 16)
-texture = SubResource("AtlasTexture_520se")
+texture = ExtResource("4_520se")
 hframes = 2
 vframes = 2
 frame = 2
@@ -107,14 +142,53 @@ frame = 2
 unique_name_in_owner = true
 visible = false
 position = Vector2(16, 16)
-texture = SubResource("AtlasTexture_520se")
+texture = ExtResource("4_520se")
 hframes = 2
 vframes = 2
 frame = 3
 
 [node name="collected" type="Label" parent="fragments"]
 offset_left = -80.0
-offset_top = -64.0
+offset_top = -52.0
 offset_right = 83.0
-offset_bottom = -41.0
+offset_bottom = -29.0
 text = "Fragments Collected:"
+horizontal_alignment = 1
+
+[node name="bgstuff" type="Node2D" parent="."]
+modulate = Color(0.529067, 0.529067, 0.529067, 1)
+z_index = -100
+position = Vector2(640, 360)
+scale = Vector2(0.5, 0.5)
+
+[node name="SweekerWall" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("4_jr75m")
+
+[node name="Sweeker" type="Sprite2D" parent="bgstuff"]
+unique_name_in_owner = true
+texture = ExtResource("5_qshk6")
+
+[node name="SweekerDrone" type="Sprite2D" parent="bgstuff"]
+unique_name_in_owner = true
+position = Vector2(-272, -48)
+texture = ExtResource("6_13uwi")
+
+[node name="SweekerCandy" type="Sprite2D" parent="bgstuff"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_o4u5l")
+
+[node name="SweekerMouse" type="Sprite2D" parent="bgstuff"]
+texture = ExtResource("4_frpm7")
+
+[node name="Mouse-sprites-sheet" type="Sprite2D" parent="."]
+position = Vector2(512, 288)
+scale = Vector2(2, 2)
+texture = ExtResource("9_qshk6")
+hframes = 38
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o4u5l")
+}
+autoplay = "loop"
