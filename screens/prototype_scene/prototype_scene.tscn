@@ -466,9 +466,11 @@ tile_map_data = PackedByteArray("AAAWABEAAAABAAAAAAAWABAAAAABAAAAAAAWAA8AAAABAAA
 tile_set = ExtResource("3_welu2")
 
 [node name="darkness" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.741385, 0.741385, 0.741385, 1)
 
 [node name="torches" type="Node2D" parent="."]
+visible = false
 
 [node name="torch" parent="torches" instance=ExtResource("19_h7k3o")]
 position = Vector2(587, 290)
@@ -559,7 +561,5 @@ position = Vector2(4545, -889)
 
 [node name="torch30" parent="torches" instance=ExtResource("19_h7k3o")]
 position = Vector2(4596, 182)
-
-[node name="tutorial buttons" type="Node2D" parent="."]
 
 [connection signal="timeout" from="escapeshaketimer" to="." method="_on_escapeshaketimer_timeout"]
